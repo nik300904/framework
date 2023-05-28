@@ -80,39 +80,26 @@ abstract class ActiveRecordEntity
 
         $sql = 'UPDATE ' . static::getTableName() . ' SET ' . implode(', ', $columns2params) . ' WHERE id = ' . $this->id;
 
-        $a = implode(', ', $columns2params);
-
-        print_r($a);
-
-        echo '<pre>';
-        var_dump($sql);
-        echo '</pre>';
-        echo '<pre>';
-        var_dump($params2values);
-        echo '</pre>';
+//        echo '<pre>';
+//        var_dump($sql);
+//        echo '</pre>';
+//        echo '<pre>';
+//        var_dump($params2values);
+//        echo '</pre>';
 
         $db = Db::getInstance();
 
         $db->query($sql, $params2values, static::class);
-
-//        var_dump($sql);
-//
-//        var_dump($params2values);
-
-//        echo '<pre>';
-//        var_dump($columns2params);
-//        echo '</pre>';
-//        echo '<pre>';
-//        var_dump($params2values);
-//        echo '</pre>';
-//        var_dump($columns2params);
-//        var_dump($params2values);
     }
 
     private function insert(array $mappedProperties): void
     {
-
         $filteredProperties = array_filter($mappedProperties);
+
+//        echo '<pre>';
+//        var_dump($filteredProperties);
+//        echo '</pre>';
+//        return;
 
         $columns = [];
         $paramsNames = [];
@@ -133,22 +120,6 @@ abstract class ActiveRecordEntity
 
         $db = Db::getInstance();
         $db->query($sql, $params2values, static::class);
-
-//        echo '<pre>';
-//        var_dump($sql);
-//        echo '</pre>';
-//
-//        echo '<pre>';
-//        var_dump($columns);
-//        echo '</pre>';
-//
-//        echo '<pre>';
-//        var_dump($paramsNames);
-//        echo '</pre>';
-//
-//        echo '<pre>';
-//        var_dump($params2values);
-//        echo '</pre>';
     }
 
     public function delete(): void

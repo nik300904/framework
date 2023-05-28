@@ -2,6 +2,7 @@
 
 namespace src\Controllers;
 
+use src\Models\Comments\Comment;
 use src\Models\Users\User;
 use src\Models\Articles\Article;
 use src\View\View;
@@ -17,13 +18,14 @@ class ArticlesController
     public function view(int $articleId)
     {
         $article = Article::getById($articleId);
+        $comments = Comment::findAll();
 
         if ($article === null) {
             $this->view->renderHtml('errors/404.php', [], 404);
             return;
         }
 
-        $this->view->renderHtml('articles/view.php', ['article' => $article]);
+        $this->view->renderHtml('articles/view.php', ['article' => $article, 'comments' => $comments]);
     }
 
     public function edit(int $articleId): void
@@ -44,7 +46,7 @@ class ArticlesController
 
     public function add(): void
     {
-        $author = User::getById(1);
+        $author = User::getById(2);
         $article = new Article();
 
         $article->setAuthor($author);

@@ -10,9 +10,6 @@ function myAutoLoader(string $className)
 
 spl_autoload_register('myAutoLoader');
 
-$author = new src\Models\Users\User('Иван');
-$article = new src\Models\Articles\Article('Заголовок', 'Текст', $author);
-
 $route = $_GET['route'] ?? '';
 
 $routes = require '../src/routes.php';
@@ -40,39 +37,3 @@ $actionName = $controllerAndAction[1];
 
 $controller = new $controllerName();
 $controller->$actionName(...$matches);
-//var_dump($routes);
-//$controller = new src\Controllers\MainController();
-
-//var_dump($article);
-
-//if (!empty($_GET['name'])) {
-//    $controller->sayHello($_GET['name']);
-//} else {
-//    $controller->main();
-//}
-
-//$route = $_GET['route'] ?? '';
-//$pattern = '~^hello/(.*)$~';
-//
-//preg_match($pattern, $route, $matches);
-////var_dump($matches);
-//
-//if (!empty($matches)) {
-//    $controller = new src\Controllers\MainController();
-//    $controller->sayHello($matches[1]);
-//
-//    return;
-//}
-//
-//$pattern = '~^$~';
-//
-//preg_match($pattern, $route, $matches);
-//
-//if (!empty($matches)) {
-//    $controller = new src\Controllers\MainController();
-//    $controller->main();
-//    return;
-//
-//}
-//
-//echo "Страница не найдена!";

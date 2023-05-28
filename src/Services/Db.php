@@ -10,8 +10,6 @@ class Db
 
     private function __construct()
     {
-//        self::$instancesCount++;
-
         $dbOptions = require __DIR__ . '/../settings.php';
 
         $this->pdo = new \PDO(
