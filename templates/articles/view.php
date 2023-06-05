@@ -14,7 +14,7 @@ preg_match($pattern, $_GET['route'], $matches);
 <?php endforeach; ?>
 <div style="text-align: center;">
     <h1>Добавить комментарий</h1>
-    <form action="<?= $article->getId() ?>/comments" method="post">
+    <form action="comments/<?= $article->getId() ?>/add" method="post">
         <label>Текст <input type="text" name="text"></label>
 
         <br><br>
