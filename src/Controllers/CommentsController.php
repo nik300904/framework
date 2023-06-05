@@ -32,7 +32,7 @@ class CommentsController
     public function edit(int $commentId): void
     {
         $comment = Comment::getById($commentId);
-        var_dump($comment);
+
         if ($comment === null) {
             $this->view->renderHtml('errors/404.php', [], 404);
 
@@ -42,17 +42,14 @@ class CommentsController
         $comment->setText($_POST['text']);
 
         $comment->save();
-
-        header("Location: http://framework/www/articles/comments/{$comment->getArticleId()}");
-        die();
     }
 
 
-    public function add($id): void
+    public function add(): void
     {
-        $author = User::getById($id);
+        $author = User::getById(1);
 
-        $pattern = '~articles/comments/(\d+)/add$~';
+        $pattern = '~articles/(\d+)/comments~';
         preg_match($pattern, $_GET['route'], $matches);
 
         $article = Article::getById($matches[1]);
@@ -63,8 +60,5 @@ class CommentsController
         $comment->setText($_POST["text"]);
 
         $comment->save();
-
-        header("Location: http://framework/www/articles/comments/{$matches[1]}");
-        die();
     }
 }

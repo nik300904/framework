@@ -37,6 +37,7 @@ class Comment extends ActiveRecordEntity
         return $this->articles_id;
     }
 
+
     protected static function getTableName(): string
     {
         return 'comments';
